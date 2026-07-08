@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://mahabirprasad.com/sitemap.xml
+Sitemap: https://mahabir-prasad.github.io/sitemap.xml
