@@ -35,21 +35,67 @@ cv:
         start_date: 2015
         end_date: 2022
         score: ""
-        courses: "Thesis title: *Molecular Dynamics Simulation Study of Liquid Water and its properties.*"
+        courses: "Thesis title: Molecular Dynamics Simulation Study of Liquid Water and its properties."
         highlights:
           - This thesis explored the structural, dynamical, and thermodynamical behaviour of liquid water from ambient to supercooled conditions.
           - "Supervisor: Dr. Somendra Nath Chakraborty"
           - "Thesis link: [Link 1](https://dspace.cus.ac.in/jspui/handle/1/7767) and [Link 2](http://hdl.handle.net/10603/419025)"
 
-      - institution: Eidgenössische Technische Hochschule
-        location: Zurich, Switzerland
-        area: Physics
-        studyType: Federal teaching diploma
-        start_date: 1896
-        end_date: 1900
-        highlights:
-          - Description 1.
-          - Description 2.
+      - institution: Department of Chemistry, Sikkim University
+        location: Tadong, Sikkim, India
+        url: https://cus.ac.in/index.php/en/
+        area: Chemistry (with Physical Chemistry Electives)
+        studyType: MSc
+        start_date: 2013
+        end_date: 2015
+        score: ""
+        # courses: "Thesis title: Molecular Dynamics Simulation Study of Liquid Water and its properties."
+        #highlights:
+        #  - This thesis explored the structural, dynamical, and thermodynamical behaviour of liquid water from ambient to supercooled conditions.
+        #  - "Supervisor: Dr. Somendra Nath Chakraborty"
+        #  - "Thesis link: [Link 1](https://dspace.cus.ac.in/jspui/handle/1/7767) and [Link 2](http://hdl.handle.net/10603/419025)"
+
+      - institution: Sikkim Government College, Sikkim University
+        location: Tadong, Sikkim, India
+        url: https://nbbgc.org/
+        area: Chemistry (Honours)
+        studyType: BSc
+        start_date: 2010
+        end_date: 2013
+        score: ""
+        # courses: "Thesis title: Molecular Dynamics Simulation Study of Liquid Water and its properties."
+        #highlights:
+        #  - This thesis explored the structural, dynamical, and thermodynamical behaviour of liquid water from ambient to supercooled conditions.
+        #  - "Supervisor: Dr. Somendra Nath Chakraborty"
+        #  - "Thesis link: [Link 1](https://dspace.cus.ac.in/jspui/handle/1/7767) and [Link 2](http://hdl.handle.net/10603/419025)"
+
+      - institution: Government Sr. Sec. School, Dikling, CBSE
+        location: Pakyong, Sikkim, India
+        #url: https://nbbgc.org/
+        area: Science
+        studyType: Senior Secondary (10+2)
+        start_date: 2008
+        end_date: 2009
+        score: ""
+        # courses: "Thesis title: Molecular Dynamics Simulation Study of Liquid Water and its properties."
+        #highlights:
+        #  - This thesis explored the structural, dynamical, and thermodynamical behaviour of liquid water from ambient to supercooled conditions.
+        #  - "Supervisor: Dr. Somendra Nath Chakraborty"
+        #  - "Thesis link: [Link 1](https://dspace.cus.ac.in/jspui/handle/1/7767) and [Link 2](http://hdl.handle.net/10603/419025)"
+
+      - institution: Government Sr. Sec. School, Dikling, CBSE
+        location: Pakyong, Sikkim, India
+        #url: https://nbbgc.org/
+        #area: 
+        studyType: Marticulation
+        start_date: 2006
+        end_date: 2007
+        score: ""
+        # courses: "Thesis title: Molecular Dynamics Simulation Study of Liquid Water and its properties."
+        #highlights:
+        #  - This thesis explored the structural, dynamical, and thermodynamical behaviour of liquid water from ambient to supercooled conditions.
+        #  - "Supervisor: Dr. Somendra Nath Chakraborty"
+        #  - "Thesis link: [Link 1](https://dspace.cus.ac.in/jspui/handle/1/7767) and [Link 2](http://hdl.handle.net/10603/419025)"
 
     Experience:
       - company: Institute for Advanced Study, Princeton University
