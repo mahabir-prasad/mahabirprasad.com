@@ -174,7 +174,7 @@ cv:
         url: https://www.nature.com/articles/s41467-025-63768-6
         #summary: In the second paper, he applied the quantum theory to light to explain the photoelectric effect. In particular, he used the idea of light quanta (photons) to explain experimental results, but stressed the importance of the experimental results. The importance of his work on the photoelectric effect earned him the Nobel Prize in Physics in 1921.
 
-      - title: Effect of static electric fields on liquid water, its structure, dynamics, and hydrogen bond asymmetry: A molecular dynamics simulation study of TIP4P/2005 water model
+      - title: Effect of static electric fields on liquid water, its structure, dynamics, and hydrogen bond asymmetry:- A molecular dynamics simulation study of TIP4P/2005 water model
         authors:
           - Mahabir Prasad, Niall J. English & Somendra Nath Chakraborty
         publisher: The Journal of Chemical Physics
@@ -182,7 +182,7 @@ cv:
         url: https://pubs.aip.org/aip/jcp/article/159/5/054504/2905631/Effect-of-static-electric-fields-on-liquid-water
         #summary: The publication of the theory of general relativity made him internationally famous. He was professor of physics at the universities of Zurich (1909–1911) and Prague (1911–1912), before he returned to ETH Zurich (1912–1914).
        
-      - title: Hydrogen bonding in liquid water at 1 GPa : Molecular Dynamics Simulation Study of TIP4P/2005 Water Model
+      - title: Hydrogen bonding in liquid water at 1 GPa :- Molecular Dynamics Simulation Study of TIP4P/2005 Water Model
         authors:
           - Mahabir Prasad & Somendra Nath Chakraborty
         publisher: Computational and Theoretical Chemistry
@@ -190,7 +190,7 @@ cv:
         url: https://www.sciencedirect.com/science/article/pii/S2210271X21003856
         #summary: The publication of the theory of general relativity made him internationally famous. He was professor of physics at the universities of Zurich (1909–1911) and Prague (1911–1912), before he returned to ETH Zurich (1912–1914).
 
-      - title: Donor-Acceptor Structure and Dynamics: Molecular Dynamics Simulation Study of TIP4P/2005 Water Model
+      - title: Donor-Acceptor Structure and Dynamics:- Molecular Dynamics Simulation Study of TIP4P/2005 Water Model
         authors:
           - Mahabir Prasad, Niall J. English & Somendra Nath Chakraborty
         publisher: Chemical Physics Letters
@@ -206,7 +206,7 @@ cv:
         url: https://www.tandfonline.com/doi/abs/10.1080/08927022.2020.1739282
         #summary: The publication of the theory of general relativity made him internationally famous. He was professor of physics at the universities of Zurich (1909–1911) and Prague (1911–1912), before he returned to ETH Zurich (1912–1914).
 
-      - title: Relaxation dynamics and power spectra of liquid water: a molecular dynamics simulation study
+      - title: Relaxation dynamics and power spectra of liquid water:- a molecular dynamics simulation study
         authors:
           - Mahabir Prasad, Niall J. English & Somendra Nath Chakraborty
         publisher: Molecular Physics
@@ -214,6 +214,42 @@ cv:
         url: https://www.tandfonline.com/doi/abs/10.1080/00268976.2020.1733117
         #summary: The publication of the theory of general relativity made him internationally famous. He was professor of physics at the universities of Zurich (1909–1911) and Prague (1911–1912), before he returned to ETH Zurich (1912–1914).
 
+Conferences:
+      - title: Workshop and Symposium on Advanced Simulation Methods:- DFT, MD and Beyond Basic Principles and Modern Insights (ASM2019)
+        #authors: 
+        publisher: Indian Institute of Technology, Delhi
+        releaseDate: 2019
+        url: http://asm2019.iitd.ac.in/?main
+        #summary: Title : Understanding Relaxation Dynamics of Supercooled Liquid Water from Molecular Dynamics Simulation.
+
+      - title: 16$^{th}$ Theoretical Chemistry Symposium (TCS-2019)
+        #authors:
+        publisher: Birla Institute of Technology and Science, Pilani
+        releaseDate: 2019
+        url: https://www.bits-pilani.ac.in/event/theoretical-chemistry-symposium-tcs-february-13-16-2019/
+        #summary: Title : Structural Analysis of First Coordination Shell of Liquid Water from Molecular Dynamics Simulation.
+
+      - title: Frontiers in Chemical Sciences (FICS2018)
+        #authors:
+        publisher: Indian Institute of Technology, Guwahati
+        releaseDate: 2018
+        #url: https://pubs.aip.org/aip/jcp/article/159/5/054504/2905631/Effect-of-static-electric-fields-on-liquid-water
+        #summary: Title : Structural Analysis of Supercooled Liquid Water from Molecular Dynamics Simulation.
+
+      - title: Recent Trends in Chemistry (RTC-2017)
+        #authors:
+        publisher: Sikkim Manipal Institute of Technology, Sikkim
+        releaseDate: 2017
+        url: https://rtc2017chem.wixsite.com/smit
+        #summary: Title : Molecular Dynamics Simulation Study of Liquid Water.
+
+      - title: Basic Physics and Topology
+        #authors:
+        publisher: Sikkim University
+        releaseDate: 2018
+        url: https://www.cus.ac.in/images/content/dynamic/eve/2017/311017_physics_announce.pdf
+        #summary: Refresher course
+        
     Skills:
       - name: Physics
         level: Master
@@ -254,21 +290,21 @@ cv:
         icon: fa-solid fa-tag
         #keywords: "Quantum Mechanics, Quantum Computing, Quantum Information, Quantum Cryptography, Quantum Communication, Quantum Teleportation"
 
-    Certificates:
-      - name: Machine Learning
-        date: 2018-01-01
-        issuer: Stanford University
-        icon: fa-solid fa-location-dot
+    #Certificates:
+     # - name: Machine Learning
+      #  date: 2018-01-01
+       # issuer: Stanford University
+        #icon: fa-solid fa-location-dot
 
-      - name: Quantum Computing
-        date: 2018-01-01
-        issuer: Stanford University
-        icon: fa-solid fa-tag
+      #- name: Quantum Computing
+       # date: 2018-01-01
+        #issuer: Stanford University
+        #icon: fa-solid fa-tag
 
-      - name: Quantum Information
-        date: 2018-01-01
-        issuer: Stanford University
-        icon: fa-solid fa-envelope
+      #- name: Quantum Information
+       # date: 2018-01-01
+       # issuer: Stanford University
+        #icon: fa-solid fa-envelope
 
     Projects:
       - name: Quantum Computing
