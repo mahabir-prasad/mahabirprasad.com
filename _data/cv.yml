@@ -157,13 +157,13 @@ cv:
         #summary: Awarded for outstanding scientific achievement
 
     Publications:
-      - title: Ultranarrow nanochannels in a staggered two-dimensional polymer membrane enhance electric double-layer coverage for osmotic energy harvesting$^{*}$
+      - title: Ultranarrow nanochannels in a staggered two-dimensional polymer membrane enhance electric double-layer coverage for osmotic energy harvesting
         authors: Feng Ni$^{*}$, Ye Yang$^{*}$, Shuangjie Zhao$^{*}$, **Mahabir Prasad$^{*}$**, Naveen Goyal, Xusheng Yang, Dongxu Wang, Jianjun Zhang, Mike Hambsch, Miroslav Polozij,
                  Stefan C. B. Mannsfeld, Ute Kaiser, Grégory F. Schneider, Thomas D. Kühne, Thomas Heine, Zhiyong Wang & Xinliang Feng
         publisher: Nature Communications
         releaseDate: 2026-06-19
         url: https://www.nature.com/articles/s41467-026-74696-4
-        summary: $^{*}$Equal contribution
+        #summary: $^{*}$Equal contribution
 
       - title: On-liquid surface synthesis of diyne-linked two-dimensional polymer crystals
         authors: Ye Yang, Yufeng Wu, Chang Liu, Mike Hambsch, Tiange Dong, David Bodesheim, Mahabir Prasad,
