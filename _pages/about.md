@@ -3,12 +3,7 @@ layout: about
 title: about
 permalink: /
 subtitle:  #<a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
-  email: m.prasad@hzdr.de # your email address
-  research_gate_profile: Mahabir-Prasad-3
-  scholar_userid: wG4btBMAAAAJ&hl=en&oi=ao
-  orcid_id: 0000-0002-6586-5609
-  linkedin_username: mahabir-prasad-885452117
-  
+
 profile:
   align: right
   image: profile-pic-mp2.png
