@@ -26,7 +26,7 @@ latest_posts:
   scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
   limit: 3 # leave blank to include all the blog posts
 ---
-**Biography**
+Hi,
 
 I am a computational chemist and Postdoctoral Researcher in [Prof. Thomas Kühne's group](https://www.casus.science/theory-of-complex-systems/) at [Helmholtz-Zentrum Dresden-Rossendorf (HZDR)](https://www.hzdr.de/db/Cms?pOid=74004&pNid=0&pLang=en), Germany. My research interests include molecular simulations, computational materials science, and sustainable energy technologies.
 My research combines density functional theory (DFT), classical molecular dynamics (MD), and enhanced sampling techniques to investigate molecular interactions and transport phenomena in complex materials.
