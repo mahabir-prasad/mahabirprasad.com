@@ -28,7 +28,7 @@ latest_posts:
 ---
 Hi,
 
-I am a computational chemist and Postdoctoral Researcher in [Prof. Thomas Kühne's group](https://www.casus.science/theory-of-complex-systems/) at [Helmholtz-Zentrum Dresden-Rossendorf (HZDR)](https://www.hzdr.de/db/Cms?pOid=74004&pNid=0&pLang=en), Germany. My research interests include molecular simulations, computational materials science, and sustainable energy technologies.
+I am a computational chemist and Postdoctoral Researcher in [Prof. Thomas Kühne's group](https://www.casus.science/theory-of-complex-systems/) at [Center for Advanced Systems Understanding](https://www.casus.science/), [Helmholtz-Zentrum Dresden-Rossendorf (HZDR)](https://www.hzdr.de/db/Cms?pOid=74004&pNid=0&pLang=en), Germany. My research interests include molecular simulations, computational materials science, and sustainable energy technologies.
 My research combines density functional theory (DFT), classical molecular dynamics (MD), and enhanced sampling techniques to investigate molecular interactions and transport phenomena in complex materials.
 
 My scientific journey began with fundamental studies of liquid water, where I investigated hydrogen-bond networks, donor-acceptor asymmetry, structural relaxation, and the effects of pressure and external electric fields using the TIP4P/2005 water model. These studies provided molecular-level insights into the anomalous behavior of water under ambient and supercooled conditions.
