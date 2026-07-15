@@ -214,6 +214,42 @@ cv:
         releaseDate: 2020-02-27
         url: https://www.tandfonline.com/doi/abs/10.1080/00268976.2020.1733117
         #summary: The publication of the theory of general relativity made him internationally famous. He was professor of physics at the universities of Zurich (1909–1911) and Prague (1911–1912), before he returned to ETH Zurich (1912–1914).
+
+    Conferences:
+      - title: Workshop and Symposium on Advanced Simulation Methods:- DFT, MD and Beyond Basic Principles and Modern Insights (ASM2019)
+        #authors: 
+        publisher: Indian Institute of Technology, Delhi
+        releaseDate: 2019
+        url: http://asm2019.iitd.ac.in/?main
+        #summary: Title : Understanding Relaxation Dynamics of Supercooled Liquid Water from Molecular Dynamics Simulation.
+
+      - title: 16$^{th}$ Theoretical Chemistry Symposium (TCS-2019)
+        #authors:
+        publisher: Birla Institute of Technology and Science, Pilani
+        releaseDate: 2019
+        url: https://www.bits-pilani.ac.in/event/theoretical-chemistry-symposium-tcs-february-13-16-2019/
+        #summary: Title : Structural Analysis of First Coordination Shell of Liquid Water from Molecular Dynamics Simulation.
+
+      - title: Frontiers in Chemical Sciences (FICS2018)
+        #authors:
+        publisher: Indian Institute of Technology, Guwahati
+        releaseDate: 2018
+        #url: https://pubs.aip.org/aip/jcp/article/159/5/054504/2905631/Effect-of-static-electric-fields-on-liquid-water
+        #summary: Title : Structural Analysis of Supercooled Liquid Water from Molecular Dynamics Simulation.
+
+      - title: Recent Trends in Chemistry (RTC-2017)
+        #authors:
+        publisher: Sikkim Manipal Institute of Technology, Sikkim
+        releaseDate: 2017
+        url: https://rtc2017chem.wixsite.com/smit
+        #summary: Title : Molecular Dynamics Simulation Study of Liquid Water.
+
+      - title: Basic Physics and Topology
+        #authors:
+        publisher: Sikkim University
+        releaseDate: 2018
+        url: https://www.cus.ac.in/images/content/dynamic/eve/2017/311017_physics_announce.pdf
+        #summary: Refresher course
  
     Skills:
       - name: Simulations
