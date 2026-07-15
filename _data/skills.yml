@@ -1,0 +1,37 @@
+# _data/skills.yml
+#
+# Add one entry per subsection. Each subsection has a `name` and a list of
+# `items` (max 5 will be shown per row — add a 6th and it will simply wrap
+# onto a new row of its own).
+#
+# `image`  - path to the image, relative to the site root (put your files in
+#            assets/img/skills/ to keep things tidy)
+# `description` - the text shown underneath that image
+
+- name: Simulations
+  #description: Languages I write and ship code in regularly.
+  items:
+    - image: assets/img/skills/DFT.png
+      description: Density Functional Theory
+    - image: assets/img/skills/MD-classical-ab-initio.png
+      description: Classical and Ab-initio Molecular Dynamics
+    - image: assets/img/skills/monte-carlo.png
+      description: Monte Carlo simulation
+    - image: assets/img/skills/sampling.png
+      description: Umbrella Sampling and Metadynamics
+
+- name: Softwares
+  #description: Software I use to design, illustrate, and prototype.
+  items:
+    - image: assets/img/skills/CP2K_logo.png
+      description: [CP2K](https://www.cp2k.org/)
+    - image: assets/img/skills/orca-logo2.png
+      description: [ORCA](https://www.faccts.de/orca/)
+    - image: assets/img/skills/gamess.jpeg
+      description: [GAMESS](https://www.msg.chem.iastate.edu/gamess/)
+    - image: assets/img/skills/gromacs.png
+      description: [GROMACS](https://www.gromacs.org/)
+    - image: assets/img/skills/lammps.png
+      description: [LAMMPS](https://www.lammps.org/#gsc.tab=0)
+    - image: assets/img/skills/towhee.jpg
+      description: [MCCCS Towhee](https://towhee.sourceforge.net/)
