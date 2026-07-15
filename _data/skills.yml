@@ -41,4 +41,83 @@
     - image: assets/img/skills/towhee.jpg
       description: MCCCS Towhee
       link: https://towhee.sourceforge.net/
-      
+    - image: assets/img/skills/gaussian.jpg
+      description: Gaussian
+      link: https://gaussian.com/
+    - image: assets/img/skills/plumed.jpg
+      description: PLUMED
+      link: https://www.plumed.org//
+    - image: assets/img/skills/multiwfn.jpg
+      description: Multiwfn
+      link: http://sobereva.com/multiwfn/index.html
+    - image: assets/img/skills/voro++.png
+      description: Voro++
+      link: https://math.lbl.gov/voro++/
+    - image: assets/img/skills/packmol.png
+      description: PACKMOL
+      link: https://m3g.github.io/packmol/
+    - image: assets/img/skills/vesta-logo.png
+      description: VESTA
+      link: https://jp-minerals.org/vesta/en/
+    - image: assets/img/skills/VMD.png
+      description: VMD
+      link: https://www.ks.uiuc.edu/Research/vmd/
+    - image: assets/img/skills/ovito1.png
+      description: OVITO
+      link: https://www.ovito.org/
+    - image: assets/img/skills/Avogadro2.png
+      description: Avogadro
+      link: https://avogadro.cc/index.html
+    - image: assets/img/skills/origin.png
+      description: Origin
+      link: https://www.originlab.com/
+    - image: assets/img/skills/grace.jpg
+      description: Grace
+      link: https://plasma-gate.weizmann.ac.il/Grace/
+    - image: assets/img/skills/Gnuplot1.png
+      description: gnuplot
+      link: http://www.gnuplot.info/
+    - image: assets/img/skills/gimp_logo.jpg
+      description: GIMP
+      link: https://www.gimp.org/
+
+- name: Programming Languages
+  #description: Software I use to design, illustrate, and prototype.
+  items:
+    - image: assets/img/skills/fortran.jpg
+      description: FORTRAN
+      link: https://fortran-lang.org/
+    - image: assets/img/skills/python.png
+      description: Python
+      link: https://www.python.org/
+
+- name: Operating Systems
+  #description: Software I use to design, illustrate, and prototype.
+  items:
+    - image: assets/img/skills/Linux_logo.jpg
+      description: Linux
+      link: https://www.linux.org/
+    - image: assets/img/skills/windows-10.jpg
+      description: Windows
+      link: https://www.microsoft.com/en-us/windows
+
+- name: Other tools
+  #description: Software I use to design, illustrate, and prototype.
+  items:
+    - image: assets/img/skills/latex.png
+      description: LATEX
+      link: https://www.latex-project.org/
+    - image: assets/img/skills/Libre-Office.png
+      description: LibreOffice
+      link: https://www.libreoffice.org/
+    - image: assets/img/skills/microsoft-office.png
+      description: Microsoft Office
+      link: https://www.microsoft.com/en-us/microsoft-365/microsoft-office
+
+- name: General Numerical Methods
+  description: I have used statistical methods of data analysis like integration, differentiation, regression, non-linear curve fitting, correlation, deconvulation, etc.
+  #items:
+  #  - image: assets/img/skills/plumed.jpg
+  #    description: PLUMED
+  #    link: https://www.plumed.org//
+ 
