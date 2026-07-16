@@ -196,7 +196,7 @@ collections:
   teachings:
     output: true
   gallery:
-    output: true
+    output: false
 
 # -----------------------------------------------------------------------------
 # Jekyll settings
