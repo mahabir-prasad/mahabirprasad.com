@@ -70,5 +70,12 @@ images:
     date: 2025-10-06
     #description: >
     #  Standing next to my poster during the evening session — great
-    #  conversations and a few new collaborations sparked here.
+    #  conversations and a few new collaborations sparked here. group-retreat-2026.jpeg
+
+  - path: assets/img/gallery/group-retreat-2026.jpeg
+    title: At our group (Theory of Complex Systems, FWUK), CASUS/HRDR Retreat.
+    date: 2026-04-15
+    #description: >
+    #  Standing next to my poster during the evening session — great
+    #  conversations and a few new collaborations sparked here. 
 ---
