@@ -143,7 +143,22 @@
   {% endif %}
 {% endif %}
 
-{% if site.page_background_image %}
+{% if site.page_background_molecule %}
+  <!-- Interactive 3D molecule page background -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js"
+    crossorigin="anonymous"
+  ></script>
+  <script>
+    window.pageBackground = {
+      moleculeUrl: "{{ site.page_background_molecule | relative_url }}",
+      opacity: {{ site.page_background_opacity | default: 0.15 }},
+      blur: {{ site.page_background_blur | default: 10 }},
+      mouseStrength: {{ site.page_background_mouse_strength | default: 0.6 }}
+    };
+  </script>
+  <script defer src="{{ '/assets/js/page-molecule-background.js' | relative_url | bust_file_cache }}"></script>
+{% elsif site.page_background_image %}
   <!-- Scrolling blurred page background -->
   <script>
     window.pageBackground = {
