@@ -2,12 +2,21 @@
  * assets/js/page-molecule-background.js
  *
  * Fetches and parses an .xyz coordinate file, then renders it as a small
- * ball-and-stick 3D molecule sitting fixed behind every page's content.
- * The molecule slowly auto-rotates and tilts further toward wherever the
- * mouse is, anywhere on the page — since the canvas itself has
- * pointer-events: none, this never blocks clicks on real content, but
- * mouse position is still tracked globally via `window`, so it works
- * everywhere, not just when hovering the canvas.
+ * ball-and-stick 3D scene sitting fixed behind every page's content.
+ *
+ * Works for a single molecule OR a large cluster of many separate
+ * molecules in one file: molecule boundaries aren't read from the file
+ * (the .xyz format has no such concept) — they're detected automatically
+ * by treating each connected group of bonded atoms as one molecule
+ * (union-find over the same bond graph used for rendering). An isolated
+ * atom with no bonds (e.g. a monatomic ion) simply becomes its own
+ * one-atom "molecule".
+ *
+ * Each detected molecule gets its own independent motion: a constant
+ * slow auto-rotation (random axis/speed per molecule) plus a tilt toward
+ * wherever the mouse is (random responsiveness/settling speed per
+ * molecule), so a large cluster reads as a living field of independently
+ * drifting molecules rather than one rigid block turning as a whole.
  *
  * Configured from _config.yml (see the `page_background_*` keys) via the
  * `window.pageBackground` object set in _includes/scripts.liquid.
@@ -16,26 +25,20 @@
   var config = window.pageBackground;
   if (!config || !config.moleculeUrl || typeof THREE === "undefined") return;
 
-  // Rough CPK-style element colors and covalent radii (Å), used for both
-  // atom sizing and for deciding which pairs of atoms are bonded.
   var ELEMENT_COLORS = {
     H: 0xcccccc, C: 0x444444, N: 0x3050f8, O: 0xff0d0d, F: 0x90e050,
     P: 0xff8000, S: 0xffff30, CL: 0x1ff01f, BR: 0xa62929, I: 0x940094,
+    NA: 0xab5cf2, K: 0x8f40d4, MG: 0x8aff00, CA: 0x3dff00,
   };
   var COVALENT_RADII = {
     H: 0.31, C: 0.76, N: 0.71, O: 0.66, F: 0.57,
     P: 1.07, S: 1.05, CL: 1.02, BR: 1.2, I: 1.39,
+    NA: 1.66, K: 2.03, MG: 1.41, CA: 1.76,
   };
 
-  function elementColor(el) {
-    return ELEMENT_COLORS[(el || "").toUpperCase()] || 0xff69b4;
-  }
-  function covalentRadius(el) {
-    return COVALENT_RADII[(el || "").toUpperCase()] || 0.75;
-  }
+  function elementColor(el) { return ELEMENT_COLORS[(el || "").toUpperCase()] || 0xff69b4; }
+  function covalentRadius(el) { return COVALENT_RADII[(el || "").toUpperCase()] || 0.75; }
 
-  // Standard .xyz format: atom count, a comment line, then one
-  // "Element x y z" line per atom.
   function parseXYZ(text) {
     var lines = text.trim().split(/\r?\n/);
     var count = parseInt(lines[0].trim(), 10);
@@ -53,8 +56,6 @@
     return atoms;
   }
 
-  // Two atoms are considered bonded if they're closer than ~1.3x the sum
-  // of their covalent radii — a common, simple heuristic.
   function findBonds(atoms) {
     var bonds = [];
     for (var i = 0; i < atoms.length; i++) {
@@ -69,9 +70,30 @@
     return bonds;
   }
 
-  // Recenter the molecule on its own centroid and scale it so its
-  // furthest atom sits at `targetRadius` — keeps any molecule, large or
-  // small, comfortably framed in view. Returns the scale factor used.
+  // Union-find over the bond graph: each connected component is one
+  // molecule. This is what lets the renderer work on any .xyz file,
+  // whether it's one molecule or hundreds packed into a cluster.
+  function groupIntoMolecules(atoms, bonds) {
+    var parent = atoms.map(function (_, i) { return i; });
+    function find(x) {
+      while (parent[x] !== x) { parent[x] = parent[parent[x]]; x = parent[x]; }
+      return x;
+    }
+    function union(a, b) {
+      var ra = find(a), rb = find(b);
+      if (ra !== rb) parent[ra] = rb;
+    }
+    bonds.forEach(function (pair) { union(pair[0], pair[1]); });
+
+    var groups = {};
+    atoms.forEach(function (_, i) {
+      var root = find(i);
+      if (!groups[root]) groups[root] = [];
+      groups[root].push(i);
+    });
+    return Object.keys(groups).map(function (k) { return groups[k]; });
+  }
+
   function centerAndScale(atoms, targetRadius) {
     var cx = 0, cy = 0, cz = 0;
     atoms.forEach(function (a) { cx += a.x; cy += a.y; cz += a.z; });
@@ -90,10 +112,21 @@
   }
 
   function init(atoms) {
-    // Bond detection uses real (unscaled) inter-atomic distances, since
-    // the covalent radii table is in Ångströms — do this before scaling.
     var bonds = findBonds(atoms);
-    var scale = centerAndScale(atoms, 5);
+    var moleculeIndexGroups = groupIntoMolecules(atoms, bonds);
+
+    // Adaptive framing: a single small molecule and a 500-molecule
+    // cluster need very different scale/camera distance to both look
+    // right, so both are derived from how many molecules were found
+    // rather than a fixed constant.
+    var moleculeCount = moleculeIndexGroups.length;
+    var targetRadius = Math.max(5, Math.sqrt(moleculeCount) * 2);
+    var scale = centerAndScale(atoms, targetRadius);
+
+    var limit = config.moleculeLimit;
+    if (limit && moleculeIndexGroups.length > limit) {
+      moleculeIndexGroups = moleculeIndexGroups.slice(0, limit);
+    }
 
     var canvas = document.createElement("canvas");
     canvas.id = "page-background";
@@ -114,61 +147,85 @@
     renderer.setSize(window.innerWidth, window.innerHeight);
 
     var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 100);
-    camera.position.z = 14;
+    var camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.z = targetRadius * 2.8;
 
     scene.add(new THREE.AmbientLight(0xffffff, 0.6));
     var dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
     dirLight.position.set(5, 5, 5);
     scene.add(dirLight);
 
-    var moleculeGroup = new THREE.Group();
-    scene.add(moleculeGroup);
-
-    // Reuse one sphere geometry for every atom (just scaled per-atom) and
-    // one cylinder geometry for every bond — cheap on memory/perf even
-    // for a few hundred atoms.
-    var sphereGeo = new THREE.SphereGeometry(1, 16, 16);
-    atoms.forEach(function (a) {
-      var mesh = new THREE.Mesh(sphereGeo, new THREE.MeshPhongMaterial({ color: elementColor(a.element) }));
-      var r = covalentRadius(a.element) * scale * 0.5;
-      mesh.scale.set(r, r, r);
-      mesh.position.set(a.x, a.y, a.z);
-      moleculeGroup.add(mesh);
-    });
-
-    var bondGeo = new THREE.CylinderGeometry(0.06, 0.06, 1, 8);
+    // Fewer segments per sphere than a single-molecule close-up needs —
+    // with potentially hundreds of molecules on screen at once (each its
+    // own draw calls), this keeps the total triangle count reasonable.
+    var sphereGeo = new THREE.SphereGeometry(1, 8, 8);
+    var bondGeo = new THREE.CylinderGeometry(0.06, 0.06, 1, 6);
     var bondMaterial = new THREE.MeshPhongMaterial({ color: 0xaaaaaa });
     var up = new THREE.Vector3(0, 1, 0);
-    bonds.forEach(function (pair) {
-      var a = atoms[pair[0]], b = atoms[pair[1]];
-      var start = new THREE.Vector3(a.x, a.y, a.z);
-      var end = new THREE.Vector3(b.x, b.y, b.z);
-      var dir = new THREE.Vector3().subVectors(end, start);
-      var length = dir.length();
-
-      var mesh = new THREE.Mesh(bondGeo, bondMaterial);
-      mesh.scale.set(1, length, 1);
-      mesh.position.copy(start).addScaledVector(dir, 0.5);
-      mesh.quaternion.setFromUnitVectors(up, dir.clone().normalize());
-      moleculeGroup.add(mesh);
-    });
 
     var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var molecules = []; // { group, autoAxisX, autoAxisY, autoSpeed, responsiveness, lerpSpeed }
+
+    moleculeIndexGroups.forEach(function (indices) {
+      // Each molecule's own centroid becomes its local pivot, so it
+      // rotates around itself rather than around the whole scene's origin.
+      var cx = 0, cy = 0, cz = 0;
+      indices.forEach(function (i) {
+        cx += atoms[i].x; cy += atoms[i].y; cz += atoms[i].z;
+      });
+      cx /= indices.length; cy /= indices.length; cz /= indices.length;
+
+      var group = new THREE.Group();
+      group.position.set(cx, cy, cz);
+      scene.add(group);
+
+      indices.forEach(function (i) {
+        var a = atoms[i];
+        var mesh = new THREE.Mesh(sphereGeo, new THREE.MeshPhongMaterial({ color: elementColor(a.element) }));
+        var r = covalentRadius(a.element) * scale * 0.5;
+        mesh.scale.set(r, r, r);
+        mesh.position.set(a.x - cx, a.y - cy, a.z - cz);
+        group.add(mesh);
+      });
+
+      var indexSet = {};
+      indices.forEach(function (i) { indexSet[i] = true; });
+      bonds.forEach(function (pair) {
+        if (!indexSet[pair[0]] || !indexSet[pair[1]]) return;
+        var a = atoms[pair[0]], b = atoms[pair[1]];
+        var start = new THREE.Vector3(a.x - cx, a.y - cy, a.z - cz);
+        var end = new THREE.Vector3(b.x - cx, b.y - cy, b.z - cz);
+        var dir = new THREE.Vector3().subVectors(end, start);
+        var length = dir.length();
+
+        var mesh = new THREE.Mesh(bondGeo, bondMaterial);
+        mesh.scale.set(1, length, 1);
+        mesh.position.copy(start).addScaledVector(dir, 0.5);
+        mesh.quaternion.setFromUnitVectors(up, dir.clone().normalize());
+        group.add(mesh);
+      });
+
+      molecules.push({
+        group: group,
+        autoAxisX: Math.random() - 0.5,
+        autoAxisY: Math.random() - 0.5,
+        autoSpeed: reduceMotion ? 0 : 0.0005 + Math.random() * 0.0015,
+        responsiveness: 0.6 + Math.random() * 0.8,
+        lerpSpeed: 0.02 + Math.random() * 0.06,
+      });
+    });
 
     // Mouse tracking is global (window-level), not canvas-level, so it
     // keeps working no matter what element is under the cursor — the
     // canvas's pointer-events: none only stops it from blocking clicks,
     // it doesn't stop us from reading the cursor position.
-    var targetRotX = 0, targetRotY = 0;
+    var mouseNX = 0, mouseNY = 0;
     if (!reduceMotion) {
       window.addEventListener(
         "mousemove",
         function (e) {
-          var nx = (e.clientX / window.innerWidth) * 2 - 1;
-          var ny = (e.clientY / window.innerHeight) * 2 - 1;
-          targetRotY = nx * config.mouseStrength;
-          targetRotX = ny * config.mouseStrength;
+          mouseNX = (e.clientX / window.innerWidth) * 2 - 1;
+          mouseNY = (e.clientY / window.innerHeight) * 2 - 1;
         },
         { passive: true }
       );
@@ -180,15 +237,18 @@
       renderer.setSize(window.innerWidth, window.innerHeight);
     });
 
-    var autoRotateSpeed = reduceMotion ? 0 : 0.0015;
-
     function animate() {
       requestAnimationFrame(animate);
-      moleculeGroup.rotation.y += autoRotateSpeed;
-      if (!reduceMotion) {
-        moleculeGroup.rotation.x += (targetRotX - moleculeGroup.rotation.x) * 0.05;
-        moleculeGroup.rotation.y += (targetRotY - moleculeGroup.rotation.y) * 0.05;
-      }
+      molecules.forEach(function (m) {
+        m.group.rotation.x += m.autoAxisX * m.autoSpeed;
+        m.group.rotation.y += m.autoAxisY * m.autoSpeed;
+        if (!reduceMotion) {
+          var targetX = mouseNY * config.mouseStrength * m.responsiveness;
+          var targetY = mouseNX * config.mouseStrength * m.responsiveness;
+          m.group.rotation.x += (targetX - m.group.rotation.x) * m.lerpSpeed;
+          m.group.rotation.y += (targetY - m.group.rotation.y) * m.lerpSpeed;
+        }
+      });
       renderer.render(scene, camera);
     }
     animate();
